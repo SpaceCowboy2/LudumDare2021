@@ -42,8 +42,8 @@ public class Push : MonoBehaviour
             PlayerController hittedMvtController = pushedObject.GetComponent<PlayerController>();
             if (hittedMvtController != null && hittedMvtController.name != _playerController.name)
             {
-                pushedObject.GetComponent<Rigidbody>().AddForce(Vector3.forward * _pushForce, ForceMode.Impulse);
-                _rb.AddForce(Vector3.back * (_pushForce / 2f), ForceMode.Impulse);
+                pushedObject.GetComponent<Rigidbody>().AddForce(transform.forward * _pushForce, ForceMode.Impulse);
+                _rb.AddForce(-transform.forward * (_pushForce / 2f), ForceMode.Impulse);
             }
         }
     }
