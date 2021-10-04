@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
-        float z = -Input.GetAxis("Vertical");
+        float z = Input.GetAxis("Vertical");
 
         Vector3 move = Vector3.forward * z + Vector3.right * x;
 

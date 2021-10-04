@@ -74,8 +74,12 @@ public class Round : MonoBehaviour
 
     public void EndGame()
     {
-        buttonNextRound.SetActive(false);
-        buttonRestartRound.SetActive(true);
+        //buttonNextRound.SetActive(false);
+        //buttonRestartRound.SetActive(true);
+        scoreP1 = 0;
+        scoreP2 = 0;
+        nbCurrentRound = 0;
+        MainMenu();
     }
 
     public void MainMenu()
