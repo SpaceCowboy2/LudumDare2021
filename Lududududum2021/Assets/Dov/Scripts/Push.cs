@@ -5,7 +5,6 @@ using UnityEngine;
 public class Push : MonoBehaviour
 {
     private Rigidbody _rb = null;
-    private PlayerController _playerController = null;
 
     [Header("Push Parameters")]
     [SerializeField] private float _pushForce = 0f;
@@ -16,7 +15,6 @@ public class Push : MonoBehaviour
     
     void Start()
     {
-        _playerController = GetComponent<PlayerController>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -39,8 +37,8 @@ public class Push : MonoBehaviour
 
         foreach (Collider pushedObject in colliders)
         {
-            PlayerController hittedMvtController = pushedObject.GetComponent<PlayerController>();
-            if (hittedMvtController != null && hittedMvtController.name != _playerController.name)
+            Rigidbody hittedMvtController = pushedObject.GetComponent<Rigidbody>();
+            if (hittedMvtController != null && hittedMvtController.name != _rb.name)
             {
                 pushedObject.GetComponent<Rigidbody>().AddForce(transform.forward * _pushForce, ForceMode.Impulse);
                 _rb.AddForce(-transform.forward * (_pushForce / 2f), ForceMode.Impulse);

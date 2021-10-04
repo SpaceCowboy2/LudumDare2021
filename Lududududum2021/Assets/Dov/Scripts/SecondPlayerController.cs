@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class SecondPlayerController : MonoBehaviour
 {
     private Rigidbody _rb = null;
     [SerializeField] private Transform target = null;
@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal2");
+        float z = Input.GetAxis("Vertical2");
 
         Vector3 move = Vector3.forward * z + Vector3.right * x;
 
