@@ -7,6 +7,7 @@ public class Round : MonoBehaviour
 {
 
     public GameObject endRoundPanel = null;
+    public GameObject mainMenuPanel = null;
     public Text timerText = null;
     public Text scoreP1Text = null;
     public Text scoreP2Text = null;
@@ -25,22 +26,13 @@ public class Round : MonoBehaviour
     private float timer = 0f;
     private bool onRound = false;
 
-    [SerializeField]
-    private bool startRound;
-    [SerializeField]
-    private bool endRound;
+    public bool endRound = false;
 
     private void Update()
     {
         if (onRound)
         {
             timer += Time.deltaTime;
-        }
-
-        if (startRound)
-        {
-            startRound = false;
-            StartRound();
         }
 
         if (endRound)
@@ -56,6 +48,7 @@ public class Round : MonoBehaviour
     {
         onRound = true;
         endRoundPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
         nbCurrentRound++;
         timer = 0f;
     }
@@ -89,5 +82,16 @@ public class Round : MonoBehaviour
         buttonNextRound.SetActive(false);
         buttonRestartRound.SetActive(true);
     }
-   
+
+    public void MainMenu()
+    {
+        endRoundPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 }
