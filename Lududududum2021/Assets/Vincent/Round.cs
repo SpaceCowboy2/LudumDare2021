@@ -14,11 +14,12 @@ public class Round : MonoBehaviour
     public Text roundText = null;
     public GameObject buttonNextRound = null;
     public GameObject buttonRestartRound = null;
+    public GameObject player1 = null;
+    public GameObject player2 = null;
+    public Transform posP1 = null;
+    public Transform posP2 = null;
 
     public int ScoreMax = 0;
-
-    /*public Player player1;
-    public Player player2;*/
 
     private int nbCurrentRound = 0;
     private int scoreP1 = 0;
@@ -26,19 +27,11 @@ public class Round : MonoBehaviour
     private float timer = 0f;
     private bool onRound = false;
 
-    public bool endRound = false;
-
     private void Update()
     {
         if (onRound)
         {
             timer += Time.deltaTime;
-        }
-
-        if (endRound)
-        {
-            endRound = false;
-            EndRound();
         }
 
         timerText.text = ((int)timer / 60).ToString("00") + " : " + ((int)timer%60).ToString("00");
@@ -49,6 +42,8 @@ public class Round : MonoBehaviour
         onRound = true;
         endRoundPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
+        player1.transform.position = posP1.position;
+        player2.transform.position = posP2.position;
         nbCurrentRound++;
         timer = 0f;
     }
@@ -92,6 +87,30 @@ public class Round : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void AddScorePlayer1()
+    {
+        scoreP1++;
+    }
+
+    public void AddScorePlayer2()
+    {
+        scoreP2++;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player1")
+        {
+            AddScorePlayer1();
+            EndRound();
+        }
+        else if (other.tag == "Player2")
+        {
+            AddScorePlayer2();
+            EndRound();
+        }
     }
 
 }

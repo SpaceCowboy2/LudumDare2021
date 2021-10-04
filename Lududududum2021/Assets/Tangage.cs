@@ -17,6 +17,6 @@ public class Tangage : MonoBehaviour
     void Update()
     {
         float angle = Mathf.PingPong(Time.time, 2 * angularSpeed) - angularSpeed;
-        transform.rotation = Quaternion.Euler(0, 0, maxAngle * angle);
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, maxAngle * angle);
     }
 }
