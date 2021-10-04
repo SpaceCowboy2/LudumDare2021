@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Push : MonoBehaviour
+public class SecondPush : MonoBehaviour
 {
     private Rigidbody _rb = null;
 
@@ -13,7 +13,7 @@ public class Push : MonoBehaviour
     [SerializeField] private float _cooldown = 2f;
     private float _timer = 0f;
 
-    
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -24,7 +24,7 @@ public class Push : MonoBehaviour
         if (_timer > 0)
             _timer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.RightShift) && _timer <= 0f)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _timer <= 0f)
         {
             PushSkill();
             _timer = _cooldown;
